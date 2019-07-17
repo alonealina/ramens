@@ -19,5 +19,7 @@
                 <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
             </ul>
         </div>
+
+        {!! link_to_route('posts.buzz', 'このラーメンを投稿', ['id' => $ramen->id], ['class' => 'btn btn-light']) !!}
     </div>
 @endsection

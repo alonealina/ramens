@@ -18,6 +18,16 @@
                 <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
             </ul>
+            @if (Auth::id() == $user->id)
+                {!! Form::open(['route' => 'posts.store']) !!}
+                    <div class="form-group">
+                        {!! Form::textarea('review', old('review'), ['class' => 'form-control', 'rows' => '2']) !!}
+                        
+                        {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                    </div>
+                {!! Form::close() !!}
+            @endif
+
         </div>
     </div>
 @endsection

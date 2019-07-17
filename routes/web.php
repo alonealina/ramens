@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 
 // ログイン認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -27,10 +25,16 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 // ユーザ機能
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+        Route::group(['prefix' => 'ramens/{id}'], function(){
+
+  });
 });
 
+Route::get('posts/buzz/{id}', 'PostsController@buzz')->name('posts.buzz');
 
 // ラーメン機能
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('ramens', 'RamensController', ['only' => ['index', 'show']]);
 });
+
