@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <h1>ラーメンレビュー作成ページ</h1>
 
     <div class="row">

@@ -4,10 +4,11 @@
             <img class="mr-2 rounded" src="{{ Gravatar::src($post->user->email, 50) }}" alt="">
             <div class="media-body">
                 <div>
-                    {!! link_to_route('users.show', $post->user->name, ['id' => $post->user->id]) !!} <span class="text-muted">posted at {{ $post->created_at }}</span>
+                    {!! link_to_route('ramens.show', $post->ramen->name, ['id' => $post->ramen_id]) !!} <span class="text-muted">posted at {{ $post->created_at }}</span>
                 </div>
                 <div>
-                    <p class="mb-0">{!! nl2br(e($post->content)) !!}</p>
+                    <p class="mb-0">評価：{!! nl2br(e($post->fivestar)) !!}</p>
+                    <p class="mb-0">レビュー：{!! nl2br(e($post->review)) !!}</p>
                 </div>
                 <div>
                     @if (Auth::id() == $post->user_id)

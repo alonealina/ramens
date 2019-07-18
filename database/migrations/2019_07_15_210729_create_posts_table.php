@@ -25,6 +25,9 @@ class CreatePostsTable extends Migration
             // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('ramen_id')->references('id')->on('ramens');
+            
+            // user_idとramen_idの組み合わせの重複を許さない
+            $table->unique(['user_id', 'ramen_id']);
         });
     }
 
