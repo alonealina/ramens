@@ -7,14 +7,15 @@
 
     <div class="row">
         <div class="col-6">
-            {!! Form::model($post, ['route' => 'posts.store']) !!}
+            {!! Form::model($post, ['route' => 'posts.store', 'enctype'=> 'multipart/form-data']) !!}
                 <div class="form-group">
                     {!! Form::label('fivestar', '評価:') !!}
                     {!! Form::selectRange('fivestar', 1,5,1, ['class' => 'form-control']) !!}
                     {!! Form::label('review', 'メッセージ:') !!}
                     {!! Form::text('review', null, ['class' => 'form-control']) !!}
                     {!! Form::label('image_url', '画像:') !!}
-                    {!! Form::text('image_url', null, ['class' => 'form-control']) !!}
+                    <!--{{ csrf_field() }}-->
+                    {!! Form::file('image_url', null, ['class' => 'form-control']) !!}
                     {!! Form::hidden('ramen_id',$ramen_id) !!}
                 </div>
         

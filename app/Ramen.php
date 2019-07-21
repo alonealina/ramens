@@ -17,6 +17,10 @@ class Ramen extends Authenticatable
     protected $fillable = [
         'name', 'city',
     ];
-
+    
+    public function postsr()
+    {
+        return $this->hasMany(Post::class);
+    }
 
 }

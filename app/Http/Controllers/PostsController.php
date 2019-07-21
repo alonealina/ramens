@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Post;
 
+use Illuminate\Support\Facades\Storage;
+
 class PostsController extends Controller
 {
     public function index()
@@ -41,16 +43,31 @@ class PostsController extends Controller
             'review' => 'required|max:300',
             'image_url' => 'required|max:300',
         ]);
+        
+        $originalImg = $request->image_url;
+        $filePath = $originalImg->store('public');
 
         $request->user()->posts()->create([
             'fivestar' => $request->fivestar,
             'review' => $request->review,
-            'image_url' => $request->image_url,
+            'image_url' => str_replace('public/', '', $filePath),
             'ramen_id' => $request->ramen_id,
         ]);
 
+        return redirect('/');
+    }
+    
+    public function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.edit', [
+            'post' => $post,
+        ]);
+        
         return back();
     }
+    
     
     public function destroy($id)
     {

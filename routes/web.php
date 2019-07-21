@@ -25,7 +25,7 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 // ユーザ機能
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy','edit']]);
         Route::group(['prefix' => 'ramens/{id}'], function(){
 
   });

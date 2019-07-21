@@ -18,4 +18,12 @@ class Controller extends BaseController
             'count_posts' => $count_posts,
         ];
     }
+    
+    public function countsr($ramen) {
+        $count_postsr = $ramen->postsr()->count();
+
+        return [
+            'count_postsr' => $count_postsr,
+        ];
+    }
 }
